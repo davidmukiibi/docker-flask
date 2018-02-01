@@ -1,0 +1,28 @@
+version: '3.2'
+services:
+  amitydb:
+    # container_name: amity-database-container
+    user: postgres
+    image: mukiibi:postgres_image
+    ports:
+      - "5432:5432"
+    restart: always
+
+  amityapi:
+    image: mukiibi:api_image
+    command: python run.py
+    depends_on:
+      - amitydb
+    ports:
+      - target: "5000"
+        published: "5000"
+        protocol: tcp
+
+    # restart: unless-stopped
+      
+            
+
+
+  
+          
+          
