@@ -1,28 +1,60 @@
-version: '3.2'
-services:
-  amitydb:
+# version: '3.2'
+# services:
+ # amitydb:
     # container_name: amity-database-container
-    user: postgres
-    image: mukiibi:postgres_image
-    ports:
-      - "5432:5432"
-    restart: always
+  #  user: postgres
+   # image: mukiibi:postgres_image
+   # ports:
+    #  - "5432:5432"
+    # restart: always
 
-  amityapi:
-    image: mukiibi:api_image
-    command: python run.py
-    depends_on:
-      - amitydb
-    ports:
-      - target: "5000"
-        published: "5000"
-        protocol: tcp
+  # amityapi:
+    # image: mukiibi:api_image
+    # command: python run.py
+    # depends_on:
+      # - amitydb
+    # ports:
+      # - target: "5000"
+        # published: "5000"
+        # protocol: tcp
 
     # restart: unless-stopped
       
-            
 
+version: '3.3'
 
+services:
+
+  api_service:
+    container_name: api_service
+    image: mukiibi:api_image_final
+    volumes:
+      - '/docker-compose-v2'
+    ports:
+      - 5001:5000
+    environment:
+      - APP_SETTING=development
+      - DATABASE_URL=postgres://postgres:postgres@amity_db:5432/docker
+      - DEV_SECRET_KEY=thisisit
+      - JWT_SECRET_KEY=thisisthekey
+    depends_on:
+      - amity_db
+    links:
+      - amity_db
+
+    
   
-          
-          
+  amity_db:
+    container_name: amity-db
+#    build:
+ #     context: ./database-image/database
+  #    dockerfile: Dockerfile
+    image: dockercomposev2_amity-db:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - DEV_SECRET_KEY=thisisit
+      - APP_SETTING=development
+      - JWT_SECRET_KEY=thisisthekey
