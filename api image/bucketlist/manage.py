@@ -11,7 +11,9 @@ manager.add_command('db', MigrateCommand)
 @manager.command
 def create_db():
     """Creates database with tables"""
+    # db.drop_all()
     db.create_all()
+    db.session.commit()
 
 @manager.command
 def drop_db():
