@@ -73,7 +73,7 @@ class LoginUser(Resource):
                 token = {'access_token': create_access_token(identity=user.email)}
                 return {'message': 'Successfully logged in', 'token': token }, 201
             else:
-                return {'message': 'You enterd a wrong password!'}, 400
+                return {'message': 'You entered a wrong password!'}, 400
         else:
             return {'message': 'User does not exist!'}, 404
 
