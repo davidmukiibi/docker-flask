@@ -1,10 +1,13 @@
+# this tells the docker daemon(read docker) to build an image on top of 
+# a postgres image of any version. the postgres image is the base image for the current image we build with this file
 FROM postgres
 
-# copy createdb.sql file to the postgres /docker-entrypoint-initdb.d folder
-# to run on iitial database start up
+# this adds the createdb.sql file to the postgres server folder /docker-entrypoint-initdb.d
+# to run on initial database server start up. on start up, all .sql, .sh files in this folder
+# are run, which makes it the best place to create a database we shall be using.
 ADD createdb.sql /docker-entrypoint-initdb.d
 
-# expose default postgres server port
+# declare the default postgres server port
 EXPOSE 5432
 
 
