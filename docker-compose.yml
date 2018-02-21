@@ -1,57 +1,50 @@
-# version: '3.2'
-# services:
- # amitydb:
-    # container_name: amity-database-container
-  #  user: postgres
-   # image: mukiibi:postgres_image
-   # ports:
-    #  - "5432:5432"
-    # restart: always
-
-  # amityapi:
-    # image: mukiibi:api_image
-    # command: python run.py
-    # depends_on:
-      # - amitydb
-    # ports:
-      # - target: "5000"
-        # published: "5000"
-        # protocol: tcp
-
-    # restart: unless-stopped
-      
-
 version: '3.3'
 
 services:
-
+  # application API service
   api_service:
+    # a name we want our container to be named.
     container_name: api_service
+
+    # the API image we created earlier on
     image: mukiibi:api_image_final
+
     volumes:
       - '/docker-compose-v2'
+
     ports:
+    # mapping the container port 5000 to the host port locally on my computer 5001
       - 5001:5000
+
     environment:
+    # environment variables for my API application
       - APP_SETTING=development
       - DATABASE_URL=postgres://postgres:postgres@amity_db:5432/docker
       - DEV_SECRET_KEY=thisisit
       - JWT_SECRET_KEY=thisisthekey
+
     depends_on:
-      - amity_db
+    # this makes this service to wait for the amity_db service to come up first before it runs
+      - amity_db_service
+
     links:
-      - amity_db
+    # this links this service to the amity_db service
+      - amity_db_service
 
     
-  
-  amity_db:
+  # apostgresql database server service
+  amity_db_service:
+
+    # container name.
     container_name: amity-db
-#    build:
- #     context: ./database-image/database
-  #    dockerfile: Dockerfile
+
+    # database image we created earlier on
     image: dockercomposev2_amity-db:latest
+
+    # mapping the container port 5432 to the host port locally on my computer 5432
     ports:
       - 5432:5432
+    
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
