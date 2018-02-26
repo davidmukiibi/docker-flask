@@ -7,12 +7,12 @@ The API is deveoped in flask with help from FlaskRestful.
 
 ## API Functionality Scope
 
-For installation steps, go to https://github.com/davidmukiibi/CP2A-BucketList-Application-API for detailed steps on how to achieve that as this will only cater for dockerizing that same app. 
+For installation steps, go to this [repo](https://github.com/davidmukiibi/CP2A-BucketList-Application-API) for detailed steps on how to achieve that as this will only cater for dockerizing that same app. 
 
 ## Installation and Setup.
 
 Assuming you have docker and docker compose are installed already locally. But if you do not,
-follow the steps on this site https://www.docker.com/get-docker for docker, and https://docs.docker.com/compose/install/ for docker compose.
+follow the steps on this [site](https://www.docker.com/get-docker) for docker, and [this](https://docs.docker.com/compose/install/) for docker compose.
 
-With that set up, clone this https://github.com/davidmukiibi/docker-compose-v2 repo so that we get started.
+With that set up, clone this [repo](https://github.com/davidmukiibi/docker-flask) so that we get started here(medium link).
 
