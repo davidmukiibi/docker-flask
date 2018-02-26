@@ -14,5 +14,5 @@ For installation steps, go to this [repo](https://github.com/davidmukiibi/CP2A-B
 Assuming you have docker and docker compose are installed already locally. But if you do not,
 follow the steps on this [site](https://www.docker.com/get-docker) for docker, and [this](https://docs.docker.com/compose/install/) for docker compose.
 
-With that set up, clone this [repo](https://github.com/davidmukiibi/docker-flask) so that we get started here(medium link).
+With that set up, clone this [repo](https://github.com/davidmukiibi/docker-flask) so that we get started [here](https://medium.com/@david.mukiibiq/docker-meets-flask-and-postgres-5259d4a87c03).
 
