@@ -42,6 +42,8 @@ services:
     image: dockercomposev2_amity-db:latest
 
     # mapping the container port 5432 to the host port locally on my computer 5432
+    # i did this for debugging purposes, so as to access the DB and confirm that indeed 
+    # the database was created and migrations applied.
     ports:
       - 5432:5432
     
