@@ -50,6 +50,4 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - DEV_SECRET_KEY=thisisit
-      - APP_SETTING=development
       - JWT_SECRET_KEY=thisisthekey
